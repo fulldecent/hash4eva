@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -375,79 +375,80 @@ CALL CryptoKitties.transfer(0x1234..., 1847)
     </div>
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-content">
-      <div class="footer-section">
-        <h4>Explore</h4>
-        <a href="index.html">Home</a>
-        <a href="incidents.html">Incidents</a>
-      </div>
-      <div class="footer-section">
-        <h4>About</h4>
-        <a href="#">About us</a>
-        <a href="demos.html">Demo scenarios</a>
-      </div>
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h4>Explore</h4>
+      <a href="index.html">Home</a>
+      <a href="incidents.html">Incidents</a>
     </div>
-  </footer>
+    <div class="footer-section">
+      <h4>About</h4>
+      <a href="#">About us</a>
+      <a href="demos.html">Demo scenarios</a>
+    </div>
+  </div>
+</footer>
 
-  <script>
-    // Parse URL parameters
-    const params = new URLSearchParams(window.location.search);
-    const txType = params.get('type') || 'contract';
-    const replayable = params.get('replayable') === 'true';
-    const failed = params.get('failed') === 'true';
-    const sandwich = params.get('sandwich') === 'true';
+<script>
+  // Parse URL parameters
+  const params = new URLSearchParams(window.location.search);
+  const txType = params.get('type') || 'contract';
+  const replayable = params.get('replayable') === 'true';
+  const failed = params.get('failed') === 'true';
+  const sandwich = params.get('sandwich') === 'true';
 
-    // Config panel toggle
-    const configToggle = document.getElementById('configToggle');
-    const configPanel = document.getElementById('configPanel');
-    configToggle.addEventListener('click', () => {
-      configPanel.style.display = configPanel.style.display === 'none' ? 'block' : 'none';
-    });
+  // Config panel toggle
+  const configToggle = document.getElementById('configToggle');
+  const configPanel = document.getElementById('configPanel');
+  configToggle.addEventListener('click', () => {
+    configPanel.style.display = configPanel.style.display === 'none' ? 'block' : 'none';
+  });
 
-    // Set config panel values
-    document.getElementById('cfgType').value = txType;
-    document.getElementById('cfgReplayable').checked = replayable;
-    document.getElementById('cfgFailed').checked = failed;
-    document.getElementById('cfgSandwich').checked = sandwich;
+  // Set config panel values
+  document.getElementById('cfgType').value = txType;
+  document.getElementById('cfgReplayable').checked = replayable;
+  document.getElementById('cfgFailed').checked = failed;
+  document.getElementById('cfgSandwich').checked = sandwich;
 
-    function updateConfig() {
-      const newParams = new URLSearchParams();
-      newParams.set('type', document.getElementById('cfgType').value);
-      newParams.set('replayable', document.getElementById('cfgReplayable').checked);
-      newParams.set('failed', document.getElementById('cfgFailed').checked);
-      newParams.set('sandwich', document.getElementById('cfgSandwich').checked);
-      window.location.search = newParams.toString();
+  function updateConfig() {
+    const newParams = new URLSearchParams();
+    newParams.set('type', document.getElementById('cfgType').value);
+    newParams.set('replayable', document.getElementById('cfgReplayable').checked);
+    newParams.set('failed', document.getElementById('cfgFailed').checked);
+    newParams.set('sandwich', document.getElementById('cfgSandwich').checked);
+    window.location.search = newParams.toString();
+  }
+
+  function copyCurrentURL() {
+    navigator.clipboard.writeText(window.location.href);
+    alert('URL copied!');
+  }
+
+  // Apply configuration
+  function applyConfig() {
+    // Warnings
+    if (replayable) {
+      document.getElementById('replayWarning').style.display = 'block';
+      document.getElementById('eip155Info').style.display = 'none';
+      document.getElementById('noEip155Info').style.display = 'block';
+    }
+    if (failed) {
+      document.getElementById('failedWarning').style.display = 'block';
+      document.getElementById('statusBadge').textContent = 'FAILED';
+      document.getElementById('statusBadge').className = 'badge badge-danger';
+      document.getElementById('statusText').innerHTML = '❌ Failed';
+      document.getElementById('statusText').style.color = 'var(--hot-red)';
+    }
+    if (sandwich) {
+      document.getElementById('sandwichWarning').style.display = 'block';
     }
 
-    function copyCurrentURL() {
-      navigator.clipboard.writeText(window.location.href);
-      alert('URL copied!');
-    }
-
-    // Apply configuration
-    function applyConfig() {
-      // Warnings
-      if (replayable) {
-        document.getElementById('replayWarning').style.display = 'block';
-        document.getElementById('eip155Info').style.display = 'none';
-        document.getElementById('noEip155Info').style.display = 'block';
-      }
-      if (failed) {
-        document.getElementById('failedWarning').style.display = 'block';
-        document.getElementById('statusBadge').textContent = 'FAILED';
-        document.getElementById('statusBadge').className = 'badge badge-danger';
-        document.getElementById('statusText').innerHTML = '❌ Failed';
-        document.getElementById('statusText').style.color = 'var(--hot-red)';
-      }
-      if (sandwich) {
-        document.getElementById('sandwichWarning').style.display = 'block';
-      }
-
-      // Transaction type specific
-      if (txType === 'transfer') {
-        document.getElementById('valueDisplay').textContent = '10.5 ETH';
-        document.getElementById('sideEffectsCard').innerHTML = `
+    // Transaction type specific
+    if (txType === 'transfer') {
+      document.getElementById('valueDisplay').textContent = '10.5 ETH';
+      document.getElementById('sideEffectsCard').innerHTML = `
           <div class="card-header">
             <span class="card-title">⚡ Side effects</span>
           </div>
@@ -460,9 +461,9 @@ CALL CryptoKitties.transfer(0x1234..., 1847)
             <span class="badge badge-success">VALUE</span>
           </div>
         `;
-      } else if (txType === 'message') {
-        document.getElementById('messageCard').style.display = 'block';
-        document.getElementById('sideEffectsCard').innerHTML = `
+    } else if (txType === 'message') {
+      document.getElementById('messageCard').style.display = 'block';
+      document.getElementById('sideEffectsCard').innerHTML = `
           <div class="card-header">
             <span class="card-title">⚡ Side effects</span>
           </div>
@@ -475,8 +476,8 @@ CALL CryptoKitties.transfer(0x1234..., 1847)
             <span class="badge badge-info">MESSAGE</span>
           </div>
         `;
-      } else if (txType === 'deploy') {
-        document.getElementById('toCard').innerHTML = `
+    } else if (txType === 'deploy') {
+      document.getElementById('toCard').innerHTML = `
           <div class="card-header">
             <span class="card-title">📥 Created contract</span>
           </div>
@@ -491,20 +492,20 @@ CALL CryptoKitties.transfer(0x1234..., 1847)
             </div>
           </div>
         `;
-      }
     }
+  }
 
-    // Tab switching
-    document.querySelectorAll('.tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-        document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
-        tab.classList.add('active');
-        document.getElementById('tab-' + tab.dataset.tab).classList.remove('hidden');
-      });
+  // Tab switching
+  document.querySelectorAll('.tab').forEach((tab) => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach((t) => t.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach((c) => c.classList.add('hidden'));
+      tab.classList.add('active');
+      document.getElementById('tab-' + tab.dataset.tab).classList.remove('hidden');
     });
+  });
 
-    applyConfig();
-  </script>
+  applyConfig();
+</script>
 </body>
 </html>

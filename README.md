@@ -4,7 +4,7 @@ An idealistic demonstration of what a blockchain explorer could look like if it 
 
 ## See it live
 
-https://fulldecent.github.io/hash4eva/
+<https://fulldecent.github.io/hash4eva/>
 
 Or serve locally:
 
@@ -12,7 +12,7 @@ Or serve locally:
 python3 -m http.server 5000
 ```
 
-Then visit http://localhost:5000.
+Then visit <http://localhost:5000>.
 
 ## Pages
 
@@ -46,3 +46,7 @@ Love letters (zero-value transactions with calldata) are displayed with the send
 ### Source provenance on every data point
 
 Every piece of displayed data includes a tooltip showing exactly where it came from — which RPC call, which event log, which API. Nothing is presented without attribution.
+
+## References
+
+1. This project is built based on [best practices documented in github-pages-template](https://github.com/fulldecent/github-pages-template), commit 7f01f52a68a7480c4df8841be7fc2614d60ca930. The lint workflow is that commit's .github/workflows/lint.yml. Jekyll build scripts from the template are omitted.
