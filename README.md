@@ -49,4 +49,4 @@ Every piece of displayed data includes a tooltip showing exactly where it came f
 
 ## References
 
-1. This project is built based on [best practices documented in github-pages-template](https://github.com/fulldecent/github-pages-template), commit 7f01f52a68a7480c4df8841be7fc2614d60ca930. The lint workflow is that commit's .github/workflows/lint.yml. Jekyll build scripts from the template are omitted. Prettier's liquid HTML parser does not reach a fixed point on `transaction.html`, so `.prettierignore` lists those files.
+1. This project is built based on [best practices documented in github-pages-template](https://github.com/fulldecent/github-pages-template), release 1.9.0. The lint workflow is that release's .github/workflows/lint.yml. Jekyll build scripts from the template are omitted. Prettier's liquid HTML parser does not reach a fixed point on `transaction.html`, so `.prettierignore` lists those files.
